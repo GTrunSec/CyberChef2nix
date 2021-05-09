@@ -3,7 +3,6 @@
     nixpkgs.url = "nixpkgs/7ff5e241a2b96fff7912b7d793a06b4374bd846c";
     cyberchef-src = {
       url = "github:gchq/cyberchef";
-      #url = "/home/gtrun/src/CyberChef";
       flake = false;
     };
 
@@ -45,10 +44,12 @@
           patched-src = prev.runCommand "patch"
             {
               src = cyberchef-src;
-              patches = [ ./remove-chromedriver.patch ];
             }
             ''
-              cp -r $src $out
+              cp -r $src tmp && chmod -R u+w tmp
+              cp ${./remove-chromedriver.patch} tmp/remove-chromedriver.patch
+              cd tmp && patch -p1 < remove-chromedriver.patch
+              cp -r ../tmp $out
             '';
         in
         {

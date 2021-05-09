@@ -3,13 +3,17 @@
     "cyberchef-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-fxnNp6u747HqhPRCyARhA0qsC9mxKrhjDPkozrM8V4k=",
-        "path": "/home/gtrun/src/CyberChef",
-        "type": "path"
+        "lastModified": 1616767791,
+        "narHash": "sha256-AGEhm+tsldefAJogXNpL9EcbpWXAqQIBPFZPoepHZwA=",
+        "owner": "gchq",
+        "repo": "cyberchef",
+        "rev": "a3b873fd96111fe2dbcb62a1e037987669290a13",
+        "type": "github"
       },
       "original": {
-        "path": "/home/gtrun/src/CyberChef",
-        "type": "path"
+        "owner": "gchq",
+        "repo": "cyberchef",
+        "type": "github"
       }
     },
     "flake-compat": {
