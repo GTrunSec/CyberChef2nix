@@ -1,0 +1,20 @@
+#+TITLE: Readme
+* Install nix
+
+#+begin_src sh :async t :exports both :results output
+wget https://github.com/hardenedlinux/nix-fpm-multiuser/releases/download/19700101/nix_3.0.pre19700101.master_amd64.deb
+sudo dpkg -i nix_3.0.pre19700101.master_amd64.deb
+#+end_src
+
+rpm user
+#+begin_src sh :async t :exports both :results output
+https://github.com/hardenedlinux/nix-fpm-multiuser/releases/download/Jan/nix-3.0.pre19700103.master-1.x86_64.rpm
+rpm -i nix-3.0.pre19700103.master-1.x86_64.rpm
+#+end_src
+
+
+or install from nixos
+#+begin_src sh :async t :exports both :results output
+curl -L https://nixos.org/nix/install | sh
+#+end_src
+

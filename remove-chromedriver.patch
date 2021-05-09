@@ -1,0 +1,60 @@
+diff --git a/package-lock.json b/package-lock.json
+index 2102229d..7a8bebfa 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -4733,30 +4733,6 @@
+         }
+       }
+     },
+-    "chromedriver": {
+-      "version": "88.0.0",
+-      "resolved": "https://registry.npmjs.org/chromedriver/-/chromedriver-88.0.0.tgz",
+-      "integrity": "sha512-EE8rXh7mikxk3VWKjUsz0KCUX8d3HkQ4HgMNJhWrWjzju12dKPPVHO9MY+YaAI5ryXrXGNf0Y4HcNKgW36P/CA==",
+-      "dev": true,
+-      "requires": {
+-        "@testim/chrome-version": "^1.0.7",
+-        "axios": "^0.21.1",
+-        "del": "^6.0.0",
+-        "extract-zip": "^2.0.1",
+-        "https-proxy-agent": "^5.0.0",
+-        "mkdirp": "^1.0.4",
+-        "proxy-from-env": "^1.1.0",
+-        "tcp-port-used": "^1.0.1"
+-      },
+-      "dependencies": {
+-        "mkdirp": {
+-          "version": "1.0.4",
+-          "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz",
+-          "integrity": "sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==",
+-          "dev": true
+-        }
+-      }
+-    },
+     "ci-info": {
+       "version": "2.0.0",
+       "resolved": "https://registry.npmjs.org/ci-info/-/ci-info-2.0.0.tgz",
+diff --git a/package.json b/package.json
+index 49c561ea..be49cadb 100644
+--- a/package.json
++++ b/package.json
+@@ -30,11 +30,7 @@
+   "main": "src/node/cjs.js",
+   "module": "src/node/index.mjs",
+   "bugs": "https://github.com/gchq/CyberChef/issues",
+-  "browserslist": [
+-    "Chrome >= 50",
+-    "Firefox >= 38",
+-    "node >= 10"
+-  ],
++  "browserslist": ["Chrome >= 50", "Firefox >= 38", "node >= 10"],
+   "devDependencies": {
+     "@babel/core": "^7.12.16",
+     "@babel/plugin-transform-runtime": "^7.12.15",
+@@ -43,7 +39,6 @@
+     "babel-eslint": "^10.1.0",
+     "babel-loader": "^8.2.2",
+     "babel-plugin-dynamic-import-node": "^2.3.3",
+-    "chromedriver": "^88.0.0",
+     "cli-progress": "^3.9.0",
+     "colors": "^1.4.0",
+     "copy-webpack-plugin": "^7.0.0",
