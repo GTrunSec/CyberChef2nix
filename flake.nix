@@ -41,20 +41,22 @@
       overlay = final: prev:
         let
           npmlock2nix = import npmlock2nix-repo { pkgs = prev; };
-          patched-src = prev.runCommand "patch"
-            {
-              src = cyberchef-src;
-            }
-            ''
-              cp -r $src tmp && chmod -R u+w tmp
-              cp ${./remove-chromedriver.patch} tmp/remove-chromedriver.patch
-              cd tmp && patch -p1 < remove-chromedriver.patch
-              cp -r ../tmp $out
-            '';
         in
         {
           cyberchef = with final;
             (
+              let
+                patched-src = prev.runCommand "patch"
+                  {
+                    src = cyberchef-src;
+                  }
+                  ''
+                    cp -r $src tmp && chmod -R u+w tmp
+                    cp ${./remove-chromedriver.patch} tmp/remove-chromedriver.patch
+                    cd tmp && patch -p1 < remove-chromedriver.patch
+                    cp -r ../tmp $out
+                  '';
+              in
               npmlock2nix.build {
                 src = patched-src;
                 installPhase = ''
