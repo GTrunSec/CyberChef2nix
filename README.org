@@ -2,19 +2,33 @@
 * Install nix
 
 #+begin_src sh :async t :exports both :results output
-wget https://github.com/hardenedlinux/nix-fpm-multiuser/releases/download/19700101/nix_3.0.pre19700101.master_amd64.deb
-sudo dpkg -i nix_3.0.pre19700101.master_amd64.deb
+sh <(curl -L https://nixos.org/nix/install) --daemon
 #+end_src
 
-rpm user
+
+* Install flake feature of nix
+
 #+begin_src sh :async t :exports both :results output
-https://github.com/hardenedlinux/nix-fpm-multiuser/releases/download/Jan/nix-3.0.pre19700103.master-1.x86_64.rpm
-rpm -i nix-3.0.pre19700103.master-1.x86_64.rpm
+nix-env -iA nixpkgs.nixUnstable
+echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf
+sudo pkill nix-daemon
 #+end_src
 
+ NOTE: `reload bash` and check your nix-version first
 
-or install from nixos
 #+begin_src sh :async t :exports both :results output
-curl -L https://nixos.org/nix/install | sh
+nix --version
+nix (Nix) 2.4pre20210326_dd77f71
 #+end_src
 
+* Nix Build
+
+#+begin_src sh :async t :exports both :results output
+nix build githhub:GTrunSec/CyberChef-nix-flake
+#+end_src
+
+#+begin_src sh :async t :exports both :results output
+git clone https://github.com/GTrunSec/CyberChef-nix-flake.git
+cd CyberChef-nix-flake
+nix-build
+#+end_src
