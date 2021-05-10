@@ -18,3 +18,15 @@ jobs:
     - run: echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf
     - name: Build CyberChef
       run: nix-build
+    - name: cp prod path
+      run: |
+        nix-build
+        cp -r "$(readlink ./result/build)" deploy
+    - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main'
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+        target_branch: gh-pages
+        build_dir: deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
