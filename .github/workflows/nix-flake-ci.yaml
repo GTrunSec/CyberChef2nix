@@ -21,7 +21,7 @@ jobs:
     - name: cp prod path
       run: |
         nix-build
-        cp -r "$(readlink ./result/build)" deploy
+        cp -r "$(readlink ./result)/build" deploy
     - name: Deploy to GitHub Pages
       if: github.ref == 'refs/heads/main'
       uses: crazy-max/ghaction-github-pages@v2
