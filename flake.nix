@@ -72,7 +72,7 @@
                   ];
                 };
                 postFixup = with prev; ''
-                  PATH=$${coreutils}/bin:${chromedriver}:bin/chromedriver:$PATH
+                  PATH=$${coreutils}/bin:$PATH
                   cat <<EOF > $out/bin/cyberchef
                   #!/usr/bin/env bash
                   set -euxo pipefail
