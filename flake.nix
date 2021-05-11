@@ -60,8 +60,17 @@
               npmlock2nix.build {
                 src = patched-src;
                 installPhase = ''
+                  runHook preInstall
                   mkdir -p $out/{bin,build}
                   cp -r build/prod/* $out/build
+                  PATH=${coreutils}/bin:$PATH
+                  cat <<EOF > $out/bin/cyberchef
+                  #!/usr/bin/env bash
+                  set -euxo pipefail
+                  xdg-open $out/build/index.html
+                  EOF
+                  chmod +x $out/bin/cyberchef
+                  runHook preInstall
                 '';
                 nodejs = pkgs.nodejs-10_x;
                 node_modules_attrs = {
@@ -71,15 +80,6 @@
                     chromedriver
                   ];
                 };
-                postFixup = with prev; ''
-                  PATH=$${coreutils}/bin:$PATH
-                  cat <<EOF > $out/bin/cyberchef
-                  #!/usr/bin/env bash
-                  set -euxo pipefail
-                  xdg-open $out/build/index.html
-                  EOF
-                  chmod +x $out/bin/cyberchef
-                '';
               }
             );
         };
